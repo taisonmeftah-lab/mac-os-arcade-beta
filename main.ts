@@ -301,6 +301,9 @@ function Control_Ceter_Pause () {
     pause(100)
     Control_Center_On = true
 }
+function dark_mode () {
+	
+}
 function Interface () {
     scene.setBackgroundImage(img`
         ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
@@ -586,6 +589,7 @@ let Apple_Logo: Sprite = null
 let ScreenSaver_Sprite: Sprite = null
 let booted = false
 let Control_Center_On = false
+let dark_mode__on = false
 Control_Center_On = false
 booted = false
 ScreenSaver_Sprite = sprites.create(img`
@@ -779,6 +783,18 @@ statusbar.setColor(1, 15, 15)
 statusbar.setBarBorder(1, 13)
 statusbar.value = 0
 statusbar.max = 200
+let textSprite3 = textsprite.create("Sorry for the inconvinience")
+textSprite3.setPosition(80, 90)
+let textSprite4 = textsprite.create("No data will be saved")
+textSprite4.setPosition(80, 105)
+textSprite4.setMaxFontHeight(6)
+let textSprite5 = textsprite.create("until the next update")
+textSprite5.setPosition(80, 115)
+textSprite5.setMaxFontHeight(6)
+pause(5000)
+sprites.destroy(textSprite3)
+sprites.destroy(textSprite4)
+sprites.destroy(textSprite5)
 music.setVolume(255)
 music.play(music.createSong(hex`0078000408010405001c000f0a006400f4010a00000400000000000000000000000000000000020800000020000312161906001c00010a006400f4016400000400000000000000000000000000000000020800000020000312161907001c00020a006400f4016400000400000000000000000000000000000000030800000020000312161908001c000e050046006603320000040a002d000000640014000132000201000208000000200003121619`), music.PlaybackMode.UntilDone)
 while (booted == false) {
@@ -1347,6 +1363,24 @@ forever(function () {
             1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
             . 1 1 1 1 1 1 1 1 1 1 1 1 1 1 . 
             `),
+        miniMenu.createMenuItem("Light/Dark mode", img`
+            . . . . f f f f f f f f . . . . 
+            . . f f f f f f 1 1 1 1 f f . . 
+            . f f f f f f f 1 1 1 1 1 1 f . 
+            . f f f f f f f 1 1 1 1 1 1 f . 
+            f f f f f f f 1 f 1 1 1 1 1 1 f 
+            f f f f f f 1 1 f f 1 1 1 1 1 f 
+            f f f f f 1 1 1 f f f 1 1 1 1 f 
+            f f f f 1 1 1 1 f f f f 1 1 1 f 
+            f f f f 1 1 1 1 f f f f 1 1 1 f 
+            f f f f f 1 1 1 f f f 1 1 1 1 f 
+            f f f f f f 1 1 f f 1 1 1 1 1 f 
+            f f f f f f f 1 f 1 1 1 1 1 1 f 
+            . f f f f f f f 1 1 1 1 1 1 f . 
+            . f f f f f f f 1 1 1 1 1 1 f . 
+            . . f f f f f f 1 1 1 1 f f . . 
+            . . . . f f f f f f f f . . . . 
+            `),
         miniMenu.createMenuItem("Background", img`
             . . . . . . 8 8 8 8 . . . . . . 
             . . . . 8 8 6 6 6 6 8 8 . . . . 
@@ -1378,6 +1412,8 @@ forever(function () {
                     Dock_auto_hide = false
                 }
             } else if (selectedIndex == 1) {
+            	
+            } else if (selectedIndex == 2) {
                 Settings_Menu.close()
                 Change_Background()
             }
